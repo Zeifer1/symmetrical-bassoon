@@ -1,0 +1,18 @@
+// Задача 25: Напишите цикл, который принимает на вход два числа (A и B)
+//  и возводит число A в натуральную степень B.
+// 3, 5 -> 243 (3⁵)
+// 2, 4 -> 16
+
+
+
+Console.WriteLine("Введите два числа А и В ");
+int a = Convert.ToInt32(Console.ReadLine());
+int b = Convert.ToInt32(Console.ReadLine());
+int x = a;
+int y = b;
+int produce = x;
+for (int i = 1; i < y; i++)
+{
+    produce = produce * x;
+}
+Console.WriteLine($"{produce} - результат возведения числа А в тепень В") ;
