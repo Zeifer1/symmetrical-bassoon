@@ -1,0 +1,42 @@
+
+//Задача 38: Задайте массив вещественных чисел. 
+//Найдите разницу между максимальным и минимальным элементов массива.
+void FillArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        array[i] = new Random().Next(-100, 100);
+}
+void PrintArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        Console.Write($"{array[i]} ");
+    Console.WriteLine();
+}
+void FindDeduction(int[] array)  // Поиск разницы максимального и минимального элемента массива;
+{
+    int numberMax = array[0];
+    int numberMin = array[0];
+    int result = numberMax - numberMin;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > numberMax)
+            numberMax = array[i];
+        else if (array[i] < numberMin)
+            numberMin = array[i];
+        result = numberMax - numberMin;
+    }
+    Console.WriteLine($"{numberMax} - максимальный элемент"); 
+    Console.WriteLine($"{numberMin} - минимальный элемент массива");
+    Console.WriteLine($"{result} - разница между Max и Min элементами массива");
+}
+int[] array = new int[4];
+FillArray(array);
+PrintArray(array);
+FindDeduction(array);
+
+
+
+
+
+
+
