@@ -1,0 +1,31 @@
+//Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+//0, 7, 8, -2, -2 -> 2
+//1, -7, 567, 89, 223-> 3
+int i;
+void FillArray(int[] array) //Заполняем массив с консоли 5-ю числами;
+{ 
+    for (i = 0; i < array.Length; i++)
+    {
+        Console.WriteLine($"Введите {i+1}-е число");
+        array[i] = Convert.ToInt32(Console.ReadLine());
+    }
+}
+void CountPositiveNumber(int[] array) // Определяем и подсчитываем числа больше 0;
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > 0) count = count + 1;   
+    }
+    Console.WriteLine($"{count} чисел больше 0"); 
+}    
+void PrintArray(int[] array)
+{
+    for (int i =0; i < array.Length; i++)
+    Console.Write(array[i]+ " ");
+    Console.WriteLine();
+}
+int[] array = new int[5];
+FillArray(array);
+PrintArray(array);
+CountPositiveNumber(array);
