@@ -1,0 +1,58 @@
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+Console.WriteLine("Введите количество строк");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите количество столбцов");
+int cols = Convert.ToInt32(Console.ReadLine());
+int[,] array = new int[rows, cols];
+FillArray(array);
+PrintArray(array);
+IndexMinRowSumma(array);
+
+void IndexMinRowSumma(int[,] array)
+{
+    int minRow = 0;
+    int indexMinRow = 0;
+    int sumRow = 0;
+    for (int i = 0; i < array.GetLength(1); i++) // работаем над первой строкой
+    {
+        minRow = minRow + array[0, i]; // определяем сумму первой строки и назначаем её минимальной 
+    }
+    for (int i = 0; i < array.GetLength(0); i++) // меняем строки
+    {
+        for (int j = 0; j < array.GetLength(1); j++) // работаем над строкой
+            sumRow = sumRow + array[i, j];  //складываем числа строки 
+        if (sumRow < minRow)
+        {
+            minRow = sumRow;  // присваеваем найденной сумме значение мин. строки 
+            indexMinRow = i;  // определяем индекс строки с мин. суммой
+        }
+        sumRow = 0; // обнуляем найденное значение сумму, т.к. переходим к работе с новой строкой
+    }
+    Console.Write($"{indexMinRow + 1} - я строка это строка c наименьшей суммой элементов");
+}
+
+void FillArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = new Random().Next(1, 11);
+}
+
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write($"{array[i, j],2} \t");
+        Console.WriteLine();
+    }
+}
+
+
+
